@@ -9,8 +9,8 @@ export default async function Page() {
     <div>
       <main className={styles.container}>
         <header className={styles.header}>
-          <h1>SurfLog</h1>
-          <h2>One Man Corporation Blog</h2>
+          <h1>TechLog</h1>
+          <h2>One Man Corporation's Tech Blog</h2>
           <p>
             {`ColdSurf is one man corporation.\nI write some inspirations to this blog.\nBecause I am easily inspired by films and music.`}
           </p>
