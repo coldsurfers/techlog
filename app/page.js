@@ -10,10 +10,8 @@ export default async function Page() {
       <main className={styles.container}>
         <header className={styles.header}>
           <h1>TechLog</h1>
-          <h2>One Man Corporation's Tech Blog</h2>
-          <p>
-            {`ColdSurf is one man corporation.\nI write some inspirations to this blog.\nBecause I am easily inspired by films and music.`}
-          </p>
+          <h2>Creative, Attractive and flexible</h2>
+          <p>{`Simple Tech Blog. Thanks for the visiting`}</p>
         </header>
 
         <h2 className={styles.heading}>All Posts</h2>
