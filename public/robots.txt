@@ -3,8 +3,8 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://surflog.coldsurf.io
+Host: https://techlog.coldsurf.io
 
 # Sitemaps
-Sitemap: https://surflog.coldsurf.io/sitemap.xml
-Sitemap: https://surflog.coldsurf.io/server-sitemap.xml
+Sitemap: https://techlog.coldsurf.io/sitemap.xml
+Sitemap: https://techlog.coldsurf.io/server-sitemap.xml

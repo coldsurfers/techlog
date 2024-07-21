@@ -2,7 +2,7 @@ const sitemap = require('nextjs-sitemap-generator')
 const path = require('path')
 
 const PAGES_DIRECTORY_PATH = path.resolve(__dirname, '../.next/server/pages')
-const BASE_URL = 'https://blog.coldsurf.io'
+const BASE_URL = 'https://techlog.coldsurf.io'
 
 sitemap({
   baseUrl: BASE_URL,
