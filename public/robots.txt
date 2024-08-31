@@ -1,5 +1,7 @@
 # *
 User-agent: *
+Disallow: /resume/
+
 Allow: /
 
 # Host
