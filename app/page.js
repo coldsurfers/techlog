@@ -1,10 +1,54 @@
 import Link from 'next/link'
 import Text from '../components/text'
 import styles from './index.module.css'
-import { getInternalPosts } from '../lib/utils'
+import notionInstance, { notionDatabaseIds } from '../lib/notionInstance'
+
+async function queryNotionBlogTechArticles() {
+  const platformFilter = {
+    property: 'platform',
+    multi_select: {
+      contains: 'techlog',
+    },
+  }
+  const result = await notionInstance.databases.query({
+    database_id: notionDatabaseIds.blog,
+    sorts: [
+      {
+        timestamp: 'created_time',
+        direction: 'descending',
+      },
+    ],
+    filter: platformFilter,
+  })
+
+  // console.log()
+
+  const posts = result.results.map((post) => {
+    const createdTime = new Date(post.created_time)
+    const lastEditedTime = new Date(post.last_edited_time)
+    const slug = post.properties?.Slug?.rich_text?.at(0)?.text.content
+    const title = post.properties?.Name?.title
+    const postStatus = post.properties.Status.status.name
+    return {
+      id: post.id,
+      createdTime,
+      lastEditedTime,
+      dateLocale: createdTime.toLocaleString('en-US', {
+        month: 'short',
+        day: '2-digit',
+        year: 'numeric',
+      }),
+      slug,
+      title,
+      status: postStatus,
+    }
+  })
+
+  return posts.filter((post) => post.status === 'Published')
+}
 
 export default async function Page() {
-  const posts = await getInternalPosts()
+  const posts = await queryNotionBlogTechArticles()
   return (
     <div>
       <main className={styles.container}>
