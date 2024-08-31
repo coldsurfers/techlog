@@ -6,5 +6,6 @@ module.exports = {
   // optional
   robotsTxtOptions: {
     additionalSitemaps: [`${process.env.SITE_URL}/server-sitemap.xml`],
+    policies: [{ disallow: '/resume/' }],
   },
 }

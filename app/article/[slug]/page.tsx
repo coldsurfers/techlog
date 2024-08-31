@@ -2,24 +2,28 @@ import { Fragment } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 
-import { getBlocks, getPageFromSlug } from '../../../lib/notion'
+import { getBlocks } from '../../../lib/notion'
 import Text from '../../../components/text'
 import { renderBlock } from '../../../components/notion/renderer'
 import styles from '../../../styles/post.module.css'
-import { getInternalPosts } from '../../../lib/utils'
 // prismjs
 import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-jsx'
+import {
+  getBlogTechPageFromSlug,
+  queryNotionBlogTechArticles,
+} from '../../../lib/utils'
 
 // Return a list of `params` to populate the [slug] dynamic segment
 export async function generateStaticParams() {
-  const posts = await getInternalPosts()
-  return posts?.map((post) => ({ slug: post.slug }))
+  const posts = await queryNotionBlogTechArticles()
+  return posts.map((post) => ({ slug: post.slug }))
 }
 
 export async function generateMetadata({ params }) {
   // fetch data
-  const page = await getPageFromSlug(params?.slug ?? '')
+  const page = await getBlogTechPageFromSlug({ slug: params?.slug ?? '' })
+  // @ts-ignore
   const pageTitle = page.properties.Name.title.at(0)?.plain_text
   return {
     title: `${pageTitle} | Blog, ColdSurf`,
@@ -28,7 +32,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Page({ params }) {
-  const page = await getPageFromSlug(params?.slug ?? '')
+  const page = await getBlogTechPageFromSlug({ slug: params?.slug ?? '' })
 
   const blocks = await getBlocks(page?.id)
 
@@ -39,15 +43,18 @@ export default async function Page({ params }) {
   return (
     <div>
       <Head>
+        {/* @ts-ignore */}
         <title>{page.properties.Title?.title[0].plain_text}</title>
       </Head>
 
       <article className={styles.container}>
         <h1 className={styles.name}>
+          {/* @ts-ignore */}
           <Text title={page.properties.Title?.title} />
         </h1>
         <section>
           {blocks.map((block) => (
+            // @ts-ignore
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
           <Link href="/" className={styles.back}>

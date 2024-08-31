@@ -1,10 +1,10 @@
 import { getServerSideSitemap } from 'next-sitemap'
-import { getInternalPosts } from '../../../lib/utils'
+import { queryNotionBlogTechArticles } from '../../../lib/utils'
 
 export async function GET() {
   // Method to source urls from cms
   // const urls = await fetch('https//example.com/api')
-  const posts = await getInternalPosts()
+  const posts = await queryNotionBlogTechArticles()
   const sitemaps = [
     {
       loc: `${process.env.SITE_URL}`,

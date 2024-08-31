@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import Text from '../components/text'
 import styles from './index.module.css'
-import { getInternalPosts } from '../lib/utils'
+import { queryNotionBlogTechArticles } from '../lib/utils'
 
 export default async function Page() {
-  const posts = await getInternalPosts()
+  const posts = await queryNotionBlogTechArticles()
   return (
     <div>
       <main className={styles.container}>
