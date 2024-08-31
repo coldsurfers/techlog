@@ -45,10 +45,10 @@
   dependencies:
     "@coldsurfers/design-tokens" "1.10.0"
 
-"@coldsurfers/prisma-schema@^0.2.0":
-  version "0.2.0"
-  resolved "https://npm.pkg.github.com/download/@coldsurfers/prisma-schema/0.2.0/4bd360c2802ada39a0ba5ffc48c0bf3df3d3f2c7#4bd360c2802ada39a0ba5ffc48c0bf3df3d3f2c7"
-  integrity sha512-mO4gWf+xrTdTPOwDWFTk73sZKHmJzByJQYw/GoCH25vxzEORD6y3ejtZvJ0aOgCWdjqc9gAKEqmKjnWhlYOIqQ==
+"@coldsurfers/prisma-schema@0.2.1-rc.11":
+  version "0.2.1-rc.11"
+  resolved "https://npm.pkg.github.com/download/@coldsurfers/prisma-schema/0.2.1-rc.11/0d65fe72be9de0d2afce627f2be7f7bbbd48ae49#0d65fe72be9de0d2afce627f2be7f7bbbd48ae49"
+  integrity sha512-DFWh3dCaCLCZ1RY8zyGT0GYBpLTrusesoAIFpFab+BFomVE6r7HsAGgHHbIOXQyHqbSgo0Oc8QNw8qCsB9KoKg==
 
 "@coldsurfers/shared-utils@1.0.0":
   version "1.0.0"
