@@ -1,8 +1,7 @@
 # *
 User-agent: *
-Disallow: /resume/
-
 Allow: /
+Disallow: /resume/
 
 # Host
 Host: https://techlog.coldsurf.io
