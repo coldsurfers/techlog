@@ -52,7 +52,7 @@ export function renderBlock(block) {
         <li key={block.id}>
           <Text title={value.rich_text} />
           {/* eslint-disable-next-line no-use-before-define */}
-          {!!value.children && renderNestedList(block)}
+          {!!block.children && renderNestedList(block)}
         </li>
       )
     case 'to_do':
@@ -253,8 +253,7 @@ export function renderBlock(block) {
 }
 
 export function renderNestedList(blocks) {
-  const { type } = blocks
-  const value = blocks[type]
+  const value = blocks
   if (!value) return null
 
   const isNumberedList = value.children[0].type === 'numbered_list_item'
