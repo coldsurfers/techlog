@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import styled from 'styled-components/native'
+import styledW from 'styled-components'
 import styles from './index.module.css'
 import { queryNotionBlogTechArticles } from '../lib/utils'
 import Title from '../components/text'
@@ -23,6 +24,24 @@ const Heading = styled(Paragraph)`
   opacity: 0.6;
   letter-spacing: 0.5px;
   font-weight: bold;
+`
+
+const DateLocale = styled(Paragraph)`
+  margin-top: 0;
+  margin-bottom: 12px;
+  opacity: 0.65;
+`
+
+const Posts = styledW.ol`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`
+
+const Post = styledW.li`
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
 `
 
 export default function Page({
@@ -53,9 +72,9 @@ export default function Page({
         </Header>
 
         <Heading>All Posts</Heading>
-        <ol className={styles.posts}>
+        <Posts>
           {posts.map((post) => (
-            <li key={post.id} className={styles.post}>
+            <Post key={post.id}>
               <h3 className={styles.postTitle}>
                 <Link href={`/article/${post.slug}`}>
                   <Paragraph style={{ fontSize: 20, fontWeight: 'bold' }}>
@@ -63,12 +82,13 @@ export default function Page({
                   </Paragraph>
                 </Link>
               </h3>
-
-              <p className={styles.postDescription}>{post.dateLocale}</p>
-              <Link href={`/article/${post.slug}`}>Read post →</Link>
-            </li>
+              <DateLocale>{post.dateLocale}</DateLocale>
+              <Link href={`/article/${post.slug}`}>
+                <Paragraph>Read post →</Paragraph>
+              </Link>
+            </Post>
           ))}
-        </ol>
+        </Posts>
       </main>
     </div>
   )
