@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@coldsurfers/cloudinary-utils": "1.0.1-rc.1",
+    "@coldsurfers/hotsurf": "^0.3.3",
     "@coldsurfers/notion-utils": "^1.0.1-rc.10",
     "@coldsurfers/ocean-road": "1.11.1-rc.0",
     "@coldsurfers/shared-utils": "1.1.0",
