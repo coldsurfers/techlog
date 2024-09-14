@@ -1,8 +1,10 @@
 import Script from 'next/script'
 
 import { Inter } from 'next/font/google'
+import { PropsWithChildren } from 'react'
 import StyleSheetRegistry from '../lib/registries/StyleSheetRegistry'
 import StyledComponentsRegistry from '../lib/registries/StyledComponentsRegistry'
+// eslint-disable-next-line import/no-unresolved
 import '@coldsurfers/hotsurf/global.css'
 import '../styles/global.css'
 
@@ -13,7 +15,7 @@ export const metadata = {
   description: 'Simple Tech Blog',
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <head>
