@@ -34,7 +34,7 @@ const getCareerData = async () => {
 
 async function queryNotionResumePage() {
   const res = await notionInstance.databases.query({
-    database_id: notionDatabaseIds.resume,
+    database_id: notionDatabaseIds.resume ?? '',
   })
   return res
 }
