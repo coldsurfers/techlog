@@ -1,8 +1,10 @@
 import Script from 'next/script'
-// eslint-disable-next-line import/no-unresolved
-import '@coldsurfers/ocean-road/global.css'
 
 import { Inter } from 'next/font/google'
+import StyleSheetRegistry from '../lib/registries/StyleSheetRegistry'
+import StyledComponentsRegistry from '../lib/registries/StyledComponentsRegistry'
+import '@coldsurfers/hotsurf/global.css'
+import '../styles/global.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -38,7 +40,11 @@ export default function RootLayout({ children }) {
           type="image/png"
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <StyledComponentsRegistry>
+          <StyleSheetRegistry>{children}</StyleSheetRegistry>
+        </StyledComponentsRegistry>
+      </body>
     </html>
   )
 }
