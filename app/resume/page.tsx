@@ -16,7 +16,14 @@ const getCareerData = async () => {
     include: {
       CareerChapter: {
         include: {
-          CareerSmallChapter: true,
+          CareerSmallChapter: {
+            orderBy: {
+              sortOrder: 'asc',
+            },
+          },
+        },
+        orderBy: {
+          sortOrder: 'asc',
         },
       },
     },
