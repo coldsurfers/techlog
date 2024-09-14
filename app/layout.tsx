@@ -44,6 +44,15 @@ export default function RootLayout({ children }: PropsWithChildren) {
         />
       </head>
       <body className={inter.className}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+              const theme = systemDark ? 'dark' : 'light';
+              document.documentElement.setAttribute('data-theme', theme);
+          `,
+          }}
+        />
         <StyledComponentsRegistry>
           <StyleSheetRegistry>
             <ThemeContextRegistry>{children}</ThemeContextRegistry>

@@ -4,7 +4,7 @@ import { PropsWithChildren, createContext, useEffect, useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 
 interface ThemeContextProps {
-  theme: string | null
+  theme: string
   toggleTheme: () => void
 }
 

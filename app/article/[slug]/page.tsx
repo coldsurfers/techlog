@@ -20,7 +20,11 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }))
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({
+  params,
+}: {
+  params?: { slug: string }
+}) {
   // fetch data
   const page = await getBlogTechPageFromSlug({ slug: params?.slug ?? '' })
   // @ts-ignore
@@ -31,7 +35,7 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default async function Page({ params }) {
+export default async function Page({ params }: { params?: { slug: string } }) {
   const page = await getBlogTechPageFromSlug({ slug: params?.slug ?? '' })
 
   const blocks = await getBlocks(page?.id)
