@@ -12,7 +12,6 @@ const Paragraph = ({
   const baseStyles: StyleProp<TextStyle> = {
     fontFamily: 'Noto Sans KR',
   }
-  console.log(otherProps)
   return (
     <Text style={[baseStyles, style]} {...otherProps}>
       {children}
