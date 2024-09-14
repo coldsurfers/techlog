@@ -1,6 +1,6 @@
 import Script from 'next/script'
 
-import { Inter } from 'next/font/google'
+import { Noto_Sans_KR } from 'next/font/google'
 import { PropsWithChildren } from 'react'
 import StyleSheetRegistry from '../lib/registries/StyleSheetRegistry'
 import StyledComponentsRegistry from '../lib/registries/StyledComponentsRegistry'
@@ -9,7 +9,7 @@ import '@coldsurfers/hotsurf/global.css'
 import '../styles/global.css'
 import ThemeContextRegistry from '../lib/registries/ThemeContextRegistry'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Noto_Sans_KR({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Tech Blog | Coldsurf',
