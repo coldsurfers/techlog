@@ -7,6 +7,7 @@ import StyledComponentsRegistry from '../lib/registries/StyledComponentsRegistry
 // eslint-disable-next-line import/no-unresolved
 import '@coldsurfers/hotsurf/global.css'
 import '../styles/global.css'
+import ThemeContextRegistry from '../lib/registries/ThemeContextRegistry'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -44,7 +45,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
       </head>
       <body className={inter.className}>
         <StyledComponentsRegistry>
-          <StyleSheetRegistry>{children}</StyleSheetRegistry>
+          <StyleSheetRegistry>
+            <ThemeContextRegistry>{children}</ThemeContextRegistry>
+          </StyleSheetRegistry>
         </StyledComponentsRegistry>
       </body>
     </html>
