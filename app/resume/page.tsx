@@ -13,6 +13,13 @@ const getCareerData = async () => {
     orderBy: {
       startDate: 'desc',
     },
+    include: {
+      CareerChapter: {
+        include: {
+          CareerSmallChapter: true,
+        },
+      },
+    },
   })
   return data
 }
@@ -97,7 +104,21 @@ export default async function ResumePage() {
                       background: '#2D2D2D',
                     }}
                   >
-                    {item.company}
+                    <h2>{item.company}</h2>
+                    <div>
+                      {item.CareerChapter.map((chapter) => (
+                        <Fragment key={chapter.id}>
+                          <h3>{chapter.title}</h3>
+                          <ul>
+                            {chapter.CareerSmallChapter.map((smallChapter) => (
+                              <li key={smallChapter.id}>
+                                {smallChapter.description}
+                              </li>
+                            ))}
+                          </ul>
+                        </Fragment>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
