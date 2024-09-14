@@ -8,7 +8,7 @@ export async function queryNotionBlogTechArticles() {
     },
   }
   const result = await notionInstance.databases.query({
-    database_id: notionDatabaseIds.blog,
+    database_id: notionDatabaseIds.blog ?? '',
     sorts: [
       {
         timestamp: 'created_time',
@@ -49,7 +49,7 @@ export async function queryNotionBlogTechArticles() {
 
 export async function getBlogTechPageFromSlug({ slug }: { slug: string }) {
   const res = await notionInstance.databases.query({
-    database_id: notionDatabaseIds.blog,
+    database_id: notionDatabaseIds.blog ?? '',
     filter: {
       property: 'Slug',
       formula: {

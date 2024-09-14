@@ -6,7 +6,8 @@ import notionInstance, { notionDatabaseIds } from '../../lib/notionInstance'
 import { getBlocks } from '../../lib/notion'
 import { database } from '../../lib/database'
 import { renderBlock } from '../../components/notion/renderer'
-import styles from '../../styles/post.module.css'
+import postStyles from '../../styles/post.module.css'
+import resumeStyles from './page.module.css'
 
 const getCareerData = async () => {
   const data = await database.career.findMany({
@@ -33,7 +34,7 @@ const getCareerData = async () => {
 
 async function queryNotionResumePage() {
   const res = await notionInstance.databases.query({
-    database_id: notionDatabaseIds.resume,
+    database_id: notionDatabaseIds.resume ?? '',
   })
   return res
 }
@@ -54,7 +55,7 @@ export default async function ResumePage() {
         {/* @ts-ignore */}
         <title>{page.properties.Title?.title[0].plain_text}</title>
       </Head>
-      <article className={styles.container}>
+      <article className={postStyles.container}>
         <section>
           {blocks.map((block) => (
             // @ts-ignore
@@ -64,53 +65,21 @@ export default async function ResumePage() {
             {careerData.map((item, index) => (
               <div
                 key={item.company}
-                style={{ display: 'flex', marginBottom: '12px' }}
+                className={resumeStyles.careerItemWrapper}
               >
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <div
-                    style={{
-                      width: '30px',
-                      height: '30px',
-                      borderRadius: '50%',
-                      background: '#2D2D2D',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginLeft: 'auto',
-                      marginRight: 'auto',
-                    }}
-                  >
-                    <p style={{ textAlign: 'center', margin: 'unset' }}>
+                <div className={resumeStyles.careerLeft}>
+                  <div className={resumeStyles.careerCircle}>
+                    <p className={resumeStyles.careerCircleText}>
                       {careerData.length - index}
                     </p>
                   </div>
-                  <div
-                    style={{
-                      flex: 1,
-                      width: '1px',
-                      background: '#2D2D2D',
-                      marginLeft: 'auto',
-                      marginRight: 'auto',
-                    }}
-                  ></div>
+                  <div className={resumeStyles.careerLeftVerticalLine} />
                 </div>
-                <div style={{ width: '100%', marginLeft: '12px' }}>
-                  <div style={{ marginBottom: '12px' }}>
+                <div className={resumeStyles.careerDetail}>
+                  <p className={resumeStyles.careerStartDateText}>
                     {format(item.startDate, 'yyyy-MM')}
-                  </div>
-                  <div
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      padding: '12px',
-                      backgroundColor: '#fff',
-                      borderRadius: '8px',
-                      boxShadow:
-                        '0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23)', // Material Shadow
-                      fontSize: '16px',
-                      background: '#2D2D2D',
-                    }}
-                  >
+                  </p>
+                  <div className={resumeStyles.careerBox}>
                     <h2>{item.company}</h2>
                     <div>
                       {item.CareerChapter.map((chapter) => (
@@ -131,7 +100,7 @@ export default async function ResumePage() {
               </div>
             ))}
           </div>
-          <Link href="/" className={styles.back}>
+          <Link href="/" className={postStyles.back}>
             ← Go home
           </Link>
         </section>
