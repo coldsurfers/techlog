@@ -69,6 +69,9 @@ export default function Page({
           <Paragraph
             style={{ fontSize: 14, fontWeight: '400', marginTop: 8 }}
           >{`Simple Tech Blog. Thanks for the visiting`}</Paragraph>
+          <Link href="/resume" style={{ marginTop: 14 }}>
+            <Paragraph>Resume</Paragraph>
+          </Link>
         </Header>
 
         <Heading>All Posts</Heading>
