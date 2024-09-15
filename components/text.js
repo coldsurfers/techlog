@@ -36,14 +36,14 @@ export default function Text({ title }) {
     if (type === 'mention') {
       const { link_mention } = mention
       const {
-        description, // "Single · Shevil · 2024 · 3 songs"
-        height, // 352
+        // description, // "Single · Shevil · 2024 · 3 songs"
+        // height, // 352
         href, // "https://open.spotify.com/album/7tHUl5NT6zkfawkmErPDf0"
         icon_url, // "https://open.spotifycdn.com/cdn/images/favicon32.b64ecc03.png"
-        iframe_url, // "https://open.spotify.com/embed/album/7tHUl5NT6zkfawkmErPDf0?utm_source=oembed"
+        // iframe_url, // "https://open.spotify.com/embed/album/7tHUl5NT6zkfawkmErPDf0?utm_source=oembed"
         link_provider, // "Spotify"
-        thumbnail_url, // "https://i.scdn.co/image/ab67616d0000b273a4ad9fc81933bbd70a6eb7f3"
-        title, // "Cunningham"
+        // thumbnail_url, // "https://i.scdn.co/image/ab67616d0000b273a4ad9fc81933bbd70a6eb7f3"
+        // title, // "Cunningham"
       } = link_mention
       return (
         <span
