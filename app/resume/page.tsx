@@ -4,17 +4,25 @@ import PageClient from './page.client'
 
 const ResumePage = async () => {
   const careerData = await getCareerData()
-  const resumeResult = await queryNotionResumePage()
-  const { results } = resumeResult
-  const page = results.at(0)
+  const careerResult = await queryNotionResumePage('Career')
+  const musicCareerResult = await queryNotionResumePage('Music Career')
+  const careerPage = careerResult.results.at(0)
+  const musicCareerPage = musicCareerResult.results.at(0)
 
-  if (!page) {
+  if (!careerPage || !musicCareerPage) {
     return null
   }
 
-  const blocks = await getBlocks(page.id)
+  const careerBlocks = await getBlocks(careerPage.id)
+  const musicCareerBlocks = await getBlocks(musicCareerPage.id)
 
-  return <PageClient careerData={careerData} blocks={blocks} page={page} />
+  return (
+    <PageClient
+      careerData={careerData}
+      careerBlocks={careerBlocks}
+      musicCareerBlocks={musicCareerBlocks}
+    />
+  )
 }
 
 export default ResumePage

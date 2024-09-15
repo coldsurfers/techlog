@@ -24,9 +24,17 @@ export const getCareerData = async () => {
   return data
 }
 
-export async function queryNotionResumePage() {
+export async function queryNotionResumePage(
+  tagName: 'Career' | 'Side Project Career' | 'Music Career'
+) {
   const res = await notionInstance.databases.query({
     database_id: notionDatabaseIds.resume ?? '',
+    filter: {
+      property: 'Tags',
+      multi_select: {
+        contains: tagName,
+      },
+    },
   })
   return res
 }
