@@ -1,7 +1,8 @@
+import { cache } from 'react'
 import { database } from '../../lib/database'
 import notionInstance, { notionDatabaseIds } from '../../lib/notionInstance'
 
-export const getCareerData = async () => {
+export const getCareerData = cache(async () => {
   const data = await database.career.findMany({
     orderBy: {
       startDate: 'desc',
@@ -22,11 +23,19 @@ export const getCareerData = async () => {
     },
   })
   return data
-}
+})
 
-export async function queryNotionResumePage() {
-  const res = await notionInstance.databases.query({
-    database_id: notionDatabaseIds.resume ?? '',
-  })
-  return res
-}
+export const queryNotionResumePage = cache(
+  async (tagName: 'Career' | 'Side Project Career' | 'Music Career') => {
+    const res = await notionInstance.databases.query({
+      database_id: notionDatabaseIds.resume ?? '',
+      filter: {
+        property: 'Tags',
+        multi_select: {
+          contains: tagName,
+        },
+      },
+    })
+    return res
+  }
+)

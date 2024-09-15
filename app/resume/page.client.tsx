@@ -2,15 +2,8 @@
 
 import { Fragment } from 'react'
 import Link from 'next/link'
-import Head from 'next/head'
 import { format } from 'date-fns'
 import styled from 'styled-components/native'
-import {
-  DatabaseObjectResponse,
-  PageObjectResponse,
-  PartialDatabaseObjectResponse,
-  PartialPageObjectResponse,
-} from '@notionhq/client/build/src/api-endpoints'
 import { renderBlock } from '../../components/notion/renderer'
 import postStyles from '../../styles/post.module.css'
 import resumeStyles from './page.module.css'
@@ -29,27 +22,20 @@ const CareerStartDateText = styled(Paragraph)`
 
 export default function ResumePage({
   careerData,
-  blocks,
-  page,
+  careerBlocks,
+  musicCareerBlocks,
+  sideProjectCareerBlocks,
 }: {
   careerData: Awaited<ReturnType<typeof getCareerData>>
-  blocks: never[]
-  page:
-    | PageObjectResponse
-    | PartialPageObjectResponse
-    | PartialDatabaseObjectResponse
-    | DatabaseObjectResponse
-    | undefined
+  careerBlocks: never[]
+  musicCareerBlocks: never[]
+  sideProjectCareerBlocks: never[]
 }) {
   return (
     <div>
-      <Head>
-        {/* @ts-ignore */}
-        <title>{page.properties.Title?.title[0].plain_text}</title>
-      </Head>
       <article className={postStyles.container}>
         <section>
-          {blocks.map((block) => (
+          {careerBlocks.map((block) => (
             // @ts-ignore
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
@@ -105,10 +91,31 @@ export default function ResumePage({
               </div>
             ))}
           </div>
-          <Link href="/" className={postStyles.back}>
-            ← Go home
-          </Link>
         </section>
+      </article>
+
+      <article className={postStyles.container}>
+        <section>
+          {sideProjectCareerBlocks.map((block) => (
+            // @ts-ignore
+            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
+          ))}
+        </section>
+      </article>
+
+      <article className={postStyles.container}>
+        <section>
+          {musicCareerBlocks.map((block) => (
+            // @ts-ignore
+            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
+          ))}
+        </section>
+      </article>
+
+      <article className={postStyles.container}>
+        <Link href="/" className={postStyles.back}>
+          ← Go home
+        </Link>
       </article>
     </div>
   )
