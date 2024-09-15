@@ -4,8 +4,8 @@ Allow: /
 Disallow: /resume/
 
 # Host
-Host: https://techlog.coldsurf.io
+Host: https://blog.coldsurf.io
 
 # Sitemaps
-Sitemap: https://techlog.coldsurf.io/sitemap.xml
-Sitemap: https://techlog.coldsurf.io/server-sitemap.xml
+Sitemap: https://blog.coldsurf.io/sitemap.xml
+Sitemap: https://blog.coldsurf.io/server-sitemap.xml
