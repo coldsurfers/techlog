@@ -66,8 +66,26 @@ export default function Text({ title }) {
               }}
             >
               <img src={icon_url} style={{ width: 20, height: 20 }} />
-              <p style={{ marginLeft: 4, color: 'gray' }}>{link_provider}</p>
-              <p style={{ marginLeft: 4, color: '#ffffff' }}>{linkTitle}</p>
+              <p
+                style={{
+                  marginTop: 0,
+                  marginBottom: 0,
+                  marginLeft: 4,
+                  color: 'gray',
+                }}
+              >
+                {link_provider}
+              </p>
+              <p
+                style={{
+                  marginTop: 0,
+                  marginBottom: 0,
+                  marginLeft: 4,
+                  color: '#ffffff',
+                }}
+              >
+                {linkTitle}
+              </p>
             </span>
           </a>
         </span>
