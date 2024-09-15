@@ -7,11 +7,11 @@ export async function GET() {
   const posts = await queryNotionBlogTechArticles()
   const sitemaps = [
     {
-      loc: `${process.env.SITE_URL}`,
+      loc: 'https://blog.coldsurf.io',
       lastmod: new Date().toISOString(),
     },
     ...posts.map((post) => ({
-      loc: `${process.env.SITE_URL}/article/${post.slug}`,
+      loc: `https://blog.coldsurf.io/article/${post.slug}`,
       lastmod: post.lastEditedTime.toISOString(),
     })),
   ]
