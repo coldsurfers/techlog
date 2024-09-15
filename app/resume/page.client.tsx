@@ -24,10 +24,12 @@ export default function ResumePage({
   careerData,
   careerBlocks,
   musicCareerBlocks,
+  sideProjectCareerBlocks,
 }: {
   careerData: Awaited<ReturnType<typeof getCareerData>>
   careerBlocks: never[]
   musicCareerBlocks: never[]
+  sideProjectCareerBlocks: never[]
 }) {
   return (
     <div>
@@ -94,14 +96,26 @@ export default function ResumePage({
 
       <article className={postStyles.container}>
         <section>
+          {sideProjectCareerBlocks.map((block) => (
+            // @ts-ignore
+            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
+          ))}
+        </section>
+      </article>
+
+      <article className={postStyles.container}>
+        <section>
           {musicCareerBlocks.map((block) => (
             // @ts-ignore
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
-          <Link href="/" className={postStyles.back}>
-            ← Go home
-          </Link>
         </section>
+      </article>
+
+      <article className={postStyles.container}>
+        <Link href="/" className={postStyles.back}>
+          ← Go home
+        </Link>
       </article>
     </div>
   )
