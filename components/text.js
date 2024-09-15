@@ -43,7 +43,7 @@ export default function Text({ title }) {
         // iframe_url, // "https://open.spotify.com/embed/album/7tHUl5NT6zkfawkmErPDf0?utm_source=oembed"
         link_provider, // "Spotify"
         // thumbnail_url, // "https://i.scdn.co/image/ab67616d0000b273a4ad9fc81933bbd70a6eb7f3"
-        // title, // "Cunningham"
+        title: linkTitle, // "Cunningham"
       } = link_mention
       return (
         <span
@@ -67,12 +67,13 @@ export default function Text({ title }) {
             >
               <img src={icon_url} style={{ width: 20, height: 20 }} />
               <p style={{ marginLeft: 4, color: 'gray' }}>{link_provider}</p>
-              <p style={{ marginLeft: 4, color: '#ffffff' }}>{title}</p>
+              <p style={{ marginLeft: 4, color: '#ffffff' }}>{linkTitle}</p>
             </span>
           </a>
         </span>
       )
     }
+
     return null
   })
 }
