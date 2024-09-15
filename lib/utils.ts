@@ -1,6 +1,7 @@
+import { cache } from 'react'
 import notionInstance, { notionDatabaseIds } from './notionInstance'
 
-export async function queryNotionBlogTechArticles() {
+export const queryNotionBlogTechArticles = cache(async () => {
   const platformFilter = {
     property: 'platform',
     multi_select: {
@@ -45,22 +46,24 @@ export async function queryNotionBlogTechArticles() {
   })
 
   return posts.filter((post) => post.status === 'Published')
-}
+})
 
-export async function getBlogTechPageFromSlug({ slug }: { slug: string }) {
-  const res = await notionInstance.databases.query({
-    database_id: notionDatabaseIds.blog ?? '',
-    filter: {
-      property: 'Slug',
-      formula: {
-        string: {
-          equals: slug,
+export const getBlogTechPageFromSlug = cache(
+  async ({ slug }: { slug: string }) => {
+    const res = await notionInstance.databases.query({
+      database_id: notionDatabaseIds.blog ?? '',
+      filter: {
+        property: 'Slug',
+        formula: {
+          string: {
+            equals: slug,
+          },
         },
       },
-    },
-  })
-  if (res.results.length) {
-    return res.results[0]
+    })
+    if (res.results.length) {
+      return res.results[0]
+    }
+    return null
   }
-  return null
-}
+)
