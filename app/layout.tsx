@@ -23,7 +23,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         {/* google search console */}
         <meta
           name="google-site-verification"
-          content="t8pam4eI0ydfgF_W2Js3Q9bdfCsbvZA83PSE2JDh1ww"
+          content="l9LAOj6itYRXTy4r3VirpFnlCLHzjiUDFJC-WS3thU4"
         />
         {/* <!-- Google tag (gtag.js) --> */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-VDP9GWZWGR" />
