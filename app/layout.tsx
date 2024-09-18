@@ -12,8 +12,8 @@ import ThemeContextRegistry from '../lib/registries/ThemeContextRegistry'
 const inter = Noto_Sans_KR({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Tech Blog | Coldsurf',
-  description: 'Simple Tech Blog',
+  title: 'Blog | Coldsurf',
+  description: 'Simple Blog',
 }
 
 export default function RootLayout({ children }: PropsWithChildren) {
