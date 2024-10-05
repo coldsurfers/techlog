@@ -1,9 +1,12 @@
 import { getBlocks } from '../../lib/notion'
-import { getCareerData, queryNotionResumePage } from './fetchers'
+import {
+  //  getCareerData,
+  queryNotionResumePage,
+} from './fetchers'
 import PageClient from './page.client'
 
 const ResumePage = async () => {
-  const careerData = await getCareerData()
+  // const careerData = await getCareerData()
   const careerResult = await queryNotionResumePage('Career')
   const musicCareerResult = await queryNotionResumePage('Music Career')
   const sideProjectCareerResult = await queryNotionResumePage(
@@ -23,7 +26,7 @@ const ResumePage = async () => {
 
   return (
     <PageClient
-      careerData={careerData}
+      careerData={[]}
       careerBlocks={careerBlocks}
       musicCareerBlocks={musicCareerBlocks}
       sideProjectCareerBlocks={sideProjectCareerBlocks}
