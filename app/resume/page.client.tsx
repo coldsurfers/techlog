@@ -2,26 +2,26 @@
 
 import { Fragment } from 'react'
 import Link from 'next/link'
-import { format } from 'date-fns'
-import styled from 'styled-components/native'
+// import { format } from 'date-fns'
+// import styled from 'styled-components/native'
 import { renderBlock } from '../../components/notion/renderer'
 import postStyles from '../../styles/post.module.css'
-import resumeStyles from './page.module.css'
-import Paragraph from '../../components/Paragraph'
+// import resumeStyles from './page.module.css'
+// import Paragraph from '../../components/Paragraph'
 import { getCareerData } from './fetchers'
 
-const CareerCircleText = styled(Paragraph)`
-  text-align: center;
-  margin: 0px;
-`
+// const CareerCircleText = styled(Paragraph)`
+//   text-align: center;
+//   margin: 0px;
+// `
 
-const CareerStartDateText = styled(Paragraph)`
-  margin: 0px;
-  margin-bottom: 12px;
-`
+// const CareerStartDateText = styled(Paragraph)`
+//   margin: 0px;
+//   margin-bottom: 12px;
+// `
 
 export default function ResumePage({
-  careerData,
+  // careerData,
   careerBlocks,
   musicCareerBlocks,
   sideProjectCareerBlocks,
@@ -39,7 +39,7 @@ export default function ResumePage({
             // @ts-ignore
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
-          <div>
+          {/* <div>
             {careerData.map((item, index) => (
               <div
                 key={item.company}
@@ -90,7 +90,7 @@ export default function ResumePage({
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </section>
       </article>
 
