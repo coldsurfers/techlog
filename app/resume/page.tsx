@@ -13,6 +13,16 @@ async function getPageData() {
   return [careerResult, musicCareerResult, sideProjectCareerResult]
 }
 
+export async function generateMetadata() {
+  // @ts-ignore
+  const pageTitle = `Resume | Blog, ColdSurf`
+  const pageDesc = 'resume'
+  return {
+    title: pageTitle,
+    description: pageDesc,
+  }
+}
+
 const ResumePage = async () => {
   const [careerResult, musicCareerResult, sideProjectCareerResult] =
     await getPageData()

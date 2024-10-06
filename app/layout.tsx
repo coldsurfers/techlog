@@ -13,7 +13,7 @@ const inter = Noto_Sans_KR({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Blog | Coldsurf',
-  description: 'Simple Blog',
+  description: 'blog, about software techs.',
 }
 
 export default function RootLayout({ children }: PropsWithChildren) {
