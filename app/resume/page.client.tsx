@@ -4,11 +4,13 @@ import { Fragment } from 'react'
 import Link from 'next/link'
 // import { format } from 'date-fns'
 // import styled from 'styled-components/native'
+// import html2canvas from 'html2canvas'
+// import html2pdf from 'html2pdf.js'
 import { renderBlock } from '../../components/notion/renderer'
 import postStyles from './resume.contents.module.css'
 // import resumeStyles from './page.module.css'
 // import Paragraph from '../../components/Paragraph'
-import { getCareerData } from './fetchers'
+// import './page.css'
 
 // const CareerCircleText = styled(Paragraph)`
 //   text-align: center;
@@ -21,16 +23,59 @@ import { getCareerData } from './fetchers'
 // `
 
 export default function ResumePage({
-  // careerData,
   careerBlocks,
   musicCareerBlocks,
   sideProjectCareerBlocks,
 }: {
-  careerData: Awaited<ReturnType<typeof getCareerData>>
   careerBlocks: never[]
   musicCareerBlocks: never[]
   sideProjectCareerBlocks: never[]
 }) {
+  // const takeScreenshot = () => {
+  //   // Scroll to the top to ensure the entire document is visible
+  //   window.scrollTo(0, 0)
+
+  //   // Wait for the scroll to complete
+  //   setTimeout(() => {
+  //     html2canvas(document.body, { useCORS: true }).then((canvas) => {
+  //       // Create an image from the canvas
+  //       const link = document.createElement('a')
+  //       link.href = canvas.toDataURL()
+  //       link.download = 'full_page_screenshot.png'
+  //       link.click()
+  //     })
+  //   }, 500) // You may adjust the delay if needed
+  // }
+
+  // const generatePDF = () => {
+  //   // Set options for html2pdf
+  //   const options = {
+  //     margin: 1,
+  //     filename: 'website_screenshot.pdf',
+  //     image: { type: 'jpeg', quality: 0.98 },
+  //     html2canvas: { scale: 2 },
+  //     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+  //     pagebreak: { mode: 'avoid-all' },
+  //   }
+
+  //   // Select the element to capture
+  //   const element = document.body
+
+  //   // Generate PDF
+  //   html2pdf()
+  //     .from(element)
+  //     .set({
+  //       ...options,
+  //     })
+  //     .save()
+  // }
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     // generatePDF()
+  //   }, 1500)
+  // }, [])
+
   return (
     <div>
       <article className={postStyles.container}>
@@ -39,58 +84,6 @@ export default function ResumePage({
             // @ts-ignore
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
-          {/* <div>
-            {careerData.map((item, index) => (
-              <div
-                key={item.company}
-                className={resumeStyles.careerItemWrapper}
-              >
-                <div className={resumeStyles.careerLeft}>
-                  <div className={resumeStyles.careerCircle}>
-                    <CareerCircleText>
-                      {careerData.length - index}
-                    </CareerCircleText>
-                  </div>
-                  <div className={resumeStyles.careerLeftVerticalLine} />
-                </div>
-                <div className={resumeStyles.careerDetail}>
-                  <CareerStartDateText>
-                    {format(item.startDate, 'yyyy-MM')}
-                  </CareerStartDateText>
-                  <div className={resumeStyles.careerBox}>
-                    <Paragraph style={{ fontWeight: 'bold', fontSize: 20 }}>
-                      {item.company}
-                    </Paragraph>
-                    <div>
-                      {item.CareerChapter.map((chapter) => (
-                        <Fragment key={chapter.id}>
-                          <div style={{ marginTop: 8 }}>
-                            <Paragraph
-                              style={{
-                                fontWeight: 'bold',
-                                fontSize: 16,
-                              }}
-                            >
-                              {chapter.title}
-                            </Paragraph>
-                          </div>
-                          <ul style={{ marginTop: 4 }}>
-                            {chapter.CareerSmallChapter.map((smallChapter) => (
-                              <li key={smallChapter.id}>
-                                <Paragraph>
-                                  {smallChapter.description}
-                                </Paragraph>
-                              </li>
-                            ))}
-                          </ul>
-                        </Fragment>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div> */}
         </section>
       </article>
 
