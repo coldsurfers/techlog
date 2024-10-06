@@ -8,19 +8,7 @@ import Link from 'next/link'
 // import html2pdf from 'html2pdf.js'
 import { renderBlock } from '../../components/notion/renderer'
 import postStyles from './resume.contents.module.css'
-// import resumeStyles from './page.module.css'
-// import Paragraph from '../../components/Paragraph'
-// import './page.css'
-
-// const CareerCircleText = styled(Paragraph)`
-//   text-align: center;
-//   margin: 0px;
-// `
-
-// const CareerStartDateText = styled(Paragraph)`
-//   margin: 0px;
-//   margin-bottom: 12px;
-// `
+import ArticleCareer from './components/article.career'
 
 export default function ResumePage({
   careerBlocks,
@@ -29,22 +17,6 @@ export default function ResumePage({
   careerBlocks: never[]
   sideProjectCareerBlocks: never[]
 }) {
-  // const takeScreenshot = () => {
-  //   // Scroll to the top to ensure the entire document is visible
-  //   window.scrollTo(0, 0)
-
-  //   // Wait for the scroll to complete
-  //   setTimeout(() => {
-  //     html2canvas(document.body, { useCORS: true }).then((canvas) => {
-  //       // Create an image from the canvas
-  //       const link = document.createElement('a')
-  //       link.href = canvas.toDataURL()
-  //       link.download = 'full_page_screenshot.png'
-  //       link.click()
-  //     })
-  //   }, 500) // You may adjust the delay if needed
-  // }
-
   // const generatePDF = () => {
   //   // Set options for html2pdf
   //   const options = {
@@ -76,14 +48,7 @@ export default function ResumePage({
 
   return (
     <div>
-      <article className={postStyles.container}>
-        <section>
-          {careerBlocks.map((block) => (
-            // @ts-ignore
-            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-          ))}
-        </section>
-      </article>
+      <ArticleCareer careerBlocks={careerBlocks} />
 
       <article className={postStyles.container}>
         <section>
@@ -94,11 +59,13 @@ export default function ResumePage({
         </section>
       </article>
 
-      <article className={postStyles.container}>
-        <Link href="/" className={postStyles.back}>
-          ← Go home
-        </Link>
-      </article>
+      {process.env.NODE_ENV === 'development' && (
+        <article className={postStyles.container}>
+          <Link href="/" className={postStyles.back}>
+            ← Go home
+          </Link>
+        </article>
+      )}
     </div>
   )
 }
