@@ -81,7 +81,6 @@ export default function Text({ title }) {
                   marginTop: 0,
                   marginBottom: 0,
                   marginLeft: 4,
-                  color: '#ffffff',
                 }}
               >
                 {linkTitle}
