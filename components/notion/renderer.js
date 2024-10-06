@@ -42,7 +42,9 @@ export function renderBlock(block) {
       )
     case 'bulleted_list': {
       return (
-        <ul key={id}>{value.children.map((child) => renderBlock(child))}</ul>
+        <ul className={styles.list} key={id}>
+          {value.children.map((child) => renderBlock(child))}
+        </ul>
       )
     }
     case 'numbered_list': {
@@ -269,5 +271,9 @@ export function renderNestedList(blocks) {
   if (isNumberedList) {
     return <ol>{value.children.map((block) => renderBlock(block))}</ol>
   }
-  return <ul>{value.children.map((block) => renderBlock(block))}</ul>
+  return (
+    <ul className={styles.list}>
+      {value.children.map((block) => renderBlock(block))}
+    </ul>
+  )
 }

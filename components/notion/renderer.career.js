@@ -43,7 +43,7 @@ export function renderCareerBlock(block) {
       )
     case 'bulleted_list': {
       return (
-        <ul key={id}>
+        <ul className={postStyles.list} key={id}>
           {value.children.map((child) => renderCareerBlock(child))}
         </ul>
       )
@@ -279,5 +279,9 @@ export function renderNestedList(blocks) {
   if (isNumberedList) {
     return <ol>{value.children.map((block) => renderCareerBlock(block))}</ol>
   }
-  return <ul>{value.children.map((block) => renderCareerBlock(block))}</ul>
+  return (
+    <ul className={postStyles.list}>
+      {value.children.map((block) => renderCareerBlock(block))}
+    </ul>
+  )
 }
