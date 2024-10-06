@@ -1,14 +1,37 @@
 'use client'
 
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
 import Link from 'next/link'
-// import { format } from 'date-fns'
-// import styled from 'styled-components/native'
-// import html2canvas from 'html2canvas'
-// import html2pdf from 'html2pdf.js'
+// @ts-ignore
+import html2pdf from 'html2pdf.js'
 import { renderBlock } from '../../components/notion/renderer'
 import postStyles from '../../styles/post.module.css'
 import ArticleCareer from './components/article.career'
+
+const generatePDF = () => {
+  // Set options for html2pdf
+  const options = {
+    margin: 1,
+    filename: 'website_screenshot.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+    pagebreak: { mode: 'avoid-all' },
+  }
+
+  // Select the element to capture
+  const element = document.body
+
+  // Generate PDF
+  html2pdf()
+    .from(element)
+    .set({
+      ...options,
+    })
+    .save()
+}
+
+const shouldGeneratePDF = false
 
 export default function ResumePage({
   careerBlocks,
@@ -17,34 +40,20 @@ export default function ResumePage({
   careerBlocks: never[]
   sideProjectCareerBlocks: never[]
 }) {
-  // const generatePDF = () => {
-  //   // Set options for html2pdf
-  //   const options = {
-  //     margin: 1,
-  //     filename: 'website_screenshot.pdf',
-  //     image: { type: 'jpeg', quality: 0.98 },
-  //     html2canvas: { scale: 2 },
-  //     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-  //     pagebreak: { mode: 'avoid-all' },
-  //   }
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout> | null = null
+    if (shouldGeneratePDF) {
+      timeoutId = setTimeout(() => {
+        generatePDF()
+      }, 1500)
+    }
 
-  //   // Select the element to capture
-  //   const element = document.body
-
-  //   // Generate PDF
-  //   html2pdf()
-  //     .from(element)
-  //     .set({
-  //       ...options,
-  //     })
-  //     .save()
-  // }
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     // generatePDF()
-  //   }, 1500)
-  // }, [])
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId)
+      }
+    }
+  }, [])
 
   return (
     <div>
