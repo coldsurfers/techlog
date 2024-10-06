@@ -59,7 +59,7 @@ export default function ResumePage({
         </section>
       </article>
 
-      {process.env.NODE_ENV === 'development' && (
+      {process.env.NODE_ENV === 'production' && (
         <article className={postStyles.container}>
           <Link href="/" className={postStyles.back}>
             ← Go home

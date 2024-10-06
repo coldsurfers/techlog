@@ -137,3 +137,10 @@
   }
 }
 
+
+@media (max-width: 925px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+}
