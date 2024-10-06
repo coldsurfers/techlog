@@ -7,7 +7,7 @@ import Link from 'next/link'
 // import html2canvas from 'html2canvas'
 // import html2pdf from 'html2pdf.js'
 import { renderBlock } from '../../components/notion/renderer'
-import postStyles from './resume.contents.module.css'
+import postStyles from '../../styles/post.module.css'
 import ArticleCareer from './components/article.career'
 
 export default function ResumePage({

@@ -2,10 +2,10 @@
 
 import { Fragment } from 'react'
 import { renderCareerBlock } from '../../../components/notion/renderer.career'
-import resumeContentsStyles from '../resume.contents.module.css'
+import postStyles from '../../../styles/post.module.css'
 
 const ArticleCareer = ({ careerBlocks }: { careerBlocks: never[] }) => (
-  <article className={resumeContentsStyles.container}>
+  <article className={postStyles.container}>
     <section>
       {careerBlocks.map((block) => (
         // @ts-ignore
