@@ -25,13 +25,11 @@ const ResumePage = async () => {
   }
 
   const careerBlocks = await getBlocks(careerPage.id)
-  const musicCareerBlocks = await getBlocks(musicCareerPage.id)
   const sideProjectCareerBlocks = await getBlocks(sideProjectCareerPage.id)
 
   return (
     <PageClient
       careerBlocks={careerBlocks}
-      musicCareerBlocks={musicCareerBlocks}
       sideProjectCareerBlocks={sideProjectCareerBlocks}
     />
   )

@@ -24,11 +24,9 @@ import postStyles from './resume.contents.module.css'
 
 export default function ResumePage({
   careerBlocks,
-  musicCareerBlocks,
   sideProjectCareerBlocks,
 }: {
   careerBlocks: never[]
-  musicCareerBlocks: never[]
   sideProjectCareerBlocks: never[]
 }) {
   // const takeScreenshot = () => {
@@ -90,15 +88,6 @@ export default function ResumePage({
       <article className={postStyles.container}>
         <section>
           {sideProjectCareerBlocks.map((block) => (
-            // @ts-ignore
-            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-          ))}
-        </section>
-      </article>
-
-      <article className={postStyles.container}>
-        <section>
-          {musicCareerBlocks.map((block) => (
             // @ts-ignore
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
