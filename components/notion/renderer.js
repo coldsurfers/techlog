@@ -105,13 +105,8 @@ export function renderBlock(block) {
       return (
         <blockquote
           key={id}
+          className={styles.blockquote}
           style={{
-            borderLeft: '4px solid #ffffff',
-            background: '#000000',
-            marginLeft: '0px',
-            paddingLeft: '1rem',
-            paddingTop: '0.5rem',
-            paddingBottom: '0.5rem',
             fontWeight: value.rich_text[0].annotations.bold ? 'bold' : 'normal',
             fontStyle: value.rich_text[0].annotations.bold
               ? 'italic'

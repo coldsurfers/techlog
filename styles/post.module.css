@@ -194,6 +194,15 @@
   padding-inline-start: 1.5rem;
 }
 
+.blockquote {
+  border-left: 4px solid #000000;
+  background: #ffffff;
+  margin-left: 0px;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 @media (prefers-color-scheme: dark) {
   .code,
   .table,
@@ -204,6 +213,11 @@
     background: rgba(255, 255, 255, 0.1);
     cursor: pointer;
     border-radius: 0.125rem;
+  }
+
+  .blockquote {
+    border-left: 4px solid #eee;
+    background: #000000;
   }
 }
 
