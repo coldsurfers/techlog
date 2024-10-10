@@ -2,12 +2,6 @@ import { cache } from 'react'
 import notionInstance, { notionDatabaseIds } from './notionInstance'
 
 export const queryNotionBlogTechArticles = cache(async () => {
-  const platformFilter = {
-    property: 'platform',
-    multi_select: {
-      contains: 'techlog',
-    },
-  }
   const result = await notionInstance.databases.query({
     database_id: notionDatabaseIds.blog ?? '',
     sorts: [
@@ -16,7 +10,22 @@ export const queryNotionBlogTechArticles = cache(async () => {
         direction: 'descending',
       },
     ],
-    filter: platformFilter,
+    filter: {
+      and: [
+        {
+          property: 'Status',
+          status: {
+            equals: 'Published',
+          },
+        },
+        {
+          property: 'platform',
+          multi_select: {
+            contains: 'techlog',
+          },
+        },
+      ],
+    },
   })
 
   const posts = result?.results?.map((post) => {
@@ -45,7 +54,7 @@ export const queryNotionBlogTechArticles = cache(async () => {
     }
   })
 
-  return posts.filter((post) => post.status === 'Published')
+  return posts
 })
 
 export const getBlogTechPageFromSlug = cache(
@@ -53,12 +62,28 @@ export const getBlogTechPageFromSlug = cache(
     const res = await notionInstance.databases.query({
       database_id: notionDatabaseIds.blog ?? '',
       filter: {
-        property: 'Slug',
-        formula: {
-          string: {
-            equals: slug,
+        and: [
+          {
+            property: 'Slug',
+            formula: {
+              string: {
+                equals: slug,
+              },
+            },
           },
-        },
+          {
+            property: 'Status',
+            status: {
+              equals: 'Published',
+            },
+          },
+          {
+            property: 'platform',
+            multi_select: {
+              contains: 'techlog',
+            },
+          },
+        ],
       },
     })
     if (res.results.length) {

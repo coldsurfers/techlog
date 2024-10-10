@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 
+import { notFound } from 'next/navigation'
 import { getBlocks } from '../../../lib/notion'
 import Text from '../../../components/text'
 import { renderBlock } from '../../../components/notion/renderer'
@@ -27,6 +28,13 @@ export async function generateMetadata({
 }) {
   // fetch data
   const page = await getBlogTechPageFromSlug({ slug: params?.slug ?? '' })
+
+  if (!page) {
+    return {
+      title: 'Blog, ColdSurf',
+    }
+  }
+
   // @ts-ignore
   const pageTitle = page.properties.Name.title.at(0)?.plain_text
   return {
@@ -38,9 +46,13 @@ export async function generateMetadata({
 export default async function Page({ params }: { params?: { slug: string } }) {
   const page = await getBlogTechPageFromSlug({ slug: params?.slug ?? '' })
 
+  if (!page) {
+    notFound()
+  }
+
   const blocks = await getBlocks(page?.id)
 
-  if (!page || !blocks) {
+  if (!blocks) {
     return <div />
   }
 
