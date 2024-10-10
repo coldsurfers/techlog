@@ -59,18 +59,13 @@ export default function Page({
               fontWeight: 'bold',
             }}
           >
-            TechLog
+            Blog, ColdSurf
           </Paragraph>
-          <Paragraph
-            style={{ fontSize: 20, fontWeight: 'bold', marginTop: 12 }}
-          >
+          <Paragraph style={{ fontSize: 20, fontWeight: '400', marginTop: 12 }}>
             Creative, Attractive and flexible
           </Paragraph>
-          <Paragraph
-            style={{ fontSize: 14, fontWeight: '400', marginTop: 8 }}
-          >{`Simple Tech Blog. Thanks for the visiting`}</Paragraph>
-          <Link href="/resume" style={{ marginTop: 14 }}>
-            <Paragraph>Resume</Paragraph>
+          <Link href="/resume" style={{ marginTop: 14, fontSize: 16 }}>
+            <Paragraph>Resume →</Paragraph>
           </Link>
         </Header>
 
