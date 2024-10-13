@@ -1,9 +1,13 @@
-import { queryNotionBlogTechArticles } from '../lib/utils'
+import {
+  queryNotionBlogTechArticles,
+  queryNotionBlogThoughtsArticles,
+} from '../lib/utils'
 import PageClient from './page.client'
 
 const Page = async () => {
-  const posts = await queryNotionBlogTechArticles()
-  return <PageClient posts={posts} />
+  const techPosts = await queryNotionBlogTechArticles()
+  const thoughtsPosts = await queryNotionBlogThoughtsArticles()
+  return <PageClient techPosts={techPosts} thoughtsPosts={thoughtsPosts} />
 }
 
 export default Page
