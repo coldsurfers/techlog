@@ -9,8 +9,8 @@ import {
   queryNotionBlogTechArticles,
   queryNotionBlogThoughtsArticles,
 } from '../lib/utils'
-import Title from '../components/text'
 import Paragraph from '../components/Paragraph'
+import PostItem from '../features/posts/ui/PostItem'
 
 const Header = styled.Text`
   margin-top: 50px;
@@ -23,7 +23,7 @@ const Header = styled.Text`
 const Heading = styled(Paragraph)<{ $isActive: boolean }>`
   margin-bottom: 20px;
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 16px;
   opacity: 0.6;
   letter-spacing: 0.5px;
   font-weight: bold;
@@ -31,22 +31,12 @@ const Heading = styled(Paragraph)<{ $isActive: boolean }>`
   border-bottom-color: ${({ $isActive }) => ($isActive ? 'white' : 'unset')};
 `
 
-const DateLocale = styled(Paragraph)`
-  margin-top: 0;
-  margin-bottom: 12px;
-  opacity: 0.65;
-`
-
 const Posts = styledW.ol`
   list-style: none;
   margin: 0;
   padding: 0;
-`
-
-const Post = styledW.li`
-  margin-bottom: 50px;
-  display: flex;
-  flex-direction: column;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `
 
 const ACTIVE_TAB_KEY = '@blog.coldsurf/activeTab'
@@ -82,14 +72,19 @@ export default function Page({
           >
             Blog, ColdSurf
           </Paragraph>
-          <Paragraph style={{ fontSize: 20, fontWeight: '400', marginTop: 12 }}>
+          <Paragraph style={{ fontSize: 16, fontWeight: '400', marginTop: 12 }}>
             🤘🏻 I follow Netflix Rockstar Principle. 🎉 I want to deliver the
             maximum happiness to users by solving their problems with product.
             📝 I regularly write technical or thought provoking articles to this
             blog.
           </Paragraph>
-          <Link href="/resume" style={{ marginTop: 14, fontSize: 16 }}>
-            <Paragraph>Resume →</Paragraph>
+          <Link
+            href="/resume"
+            style={{ marginTop: 14, fontSize: 16, marginLeft: 'auto' }}
+          >
+            <Paragraph style={{ textDecorationLine: 'underline' }}>
+              Resume →
+            </Paragraph>
           </Link>
         </Header>
 
@@ -109,19 +104,7 @@ export default function Page({
         </div>
         <Posts>
           {(activeTab === 'tech' ? techPosts : thoughtsPosts).map((post) => (
-            <Post key={post.id}>
-              <h3 className={styles.postTitle}>
-                <Link href={`/article/${post.slug}`}>
-                  <Paragraph style={{ fontSize: 20, fontWeight: 'bold' }}>
-                    <Title title={post.title} />
-                  </Paragraph>
-                </Link>
-              </h3>
-              <DateLocale>{post.dateLocale}</DateLocale>
-              <Link href={`/article/${post.slug}`}>
-                <Paragraph>Read post →</Paragraph>
-              </Link>
-            </Post>
+            <PostItem key={post.id} post={post} />
           ))}
         </Posts>
       </main>
