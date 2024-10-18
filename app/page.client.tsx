@@ -83,7 +83,10 @@ export default function Page({
             Blog, ColdSurf
           </Paragraph>
           <Paragraph style={{ fontSize: 20, fontWeight: '400', marginTop: 12 }}>
-            Creative, Attractive and flexible
+            🤘🏻 I follow Netflix Rockstar Principle. 🎉 I want to deliver the
+            maximum happiness to users by solving their problems with product.
+            📝 I regularly write technical or thought provoking articles to this
+            blog.
           </Paragraph>
           <Link href="/resume" style={{ marginTop: 14, fontSize: 16 }}>
             <Paragraph>Resume →</Paragraph>
