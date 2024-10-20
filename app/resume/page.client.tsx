@@ -31,7 +31,7 @@ const generatePDF = () => {
     .save()
 }
 
-const shouldGeneratePDF = false
+const shouldGeneratePDF = process.env.NODE_ENV === 'development'
 
 export default function ResumePage({
   careerBlocks,
